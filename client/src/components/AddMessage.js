@@ -52,7 +52,7 @@ const AddMessage = ({ mutate, match }) => {
     <div className="messageInput">
       <input
         type="text"
-        placeholder="New message"
+        placeholder=""
         onKeyUp={handleKeyUp}
       />
     </div>

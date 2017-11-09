@@ -9,6 +9,7 @@ import {
 } from 'react-apollo';
 
 import AnimatedSky from './AnimatedSky';
+import Universe from './Universe';
 
 const messagesSubscription = gql`
   subscription messageAdded($channelId: ID!) {
@@ -57,15 +58,30 @@ class ChannelDetails extends Component {
       return <NotFound />
     }
 
-    return (
-      <div>
-        <AnimatedSky bgcolor={"orange"}/>
-        <div className="channelName">
-          {channel.name}
+    if(channel.name === 'Universe') {
+      return (
+        <div>
+          <div className="channelName">
+            {channel.name}
+          </div>
+          <MessageList messages={channel.messages.slice(channel.messages.length-6,channel.messages.length).reverse()}/>
+          <Universe />
         </div>
-        <MessageList messages={channel.messages.slice(channel.messages.length-6,channel.messages.length).reverse()}/>
-      </div>
-    );
+      );
+    } else  {
+      return (
+        <div>
+           <AnimatedSky />
+          <div className="channelName">
+            {channel.name}
+          </div>
+          <MessageList messages={channel.messages.slice(channel.messages.length-6,channel.messages.length).reverse()}/>
+        </div>
+      );
+    }
+
+
+
   }
 }
 

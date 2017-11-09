@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-const AnimatedSky = ({bgcolor}) => {
-  const mystyle = {
-    backgroundColor:bgcolor
-  }
+const AnimatedSky = () => {
+
   return (
-    <div className='wrapper' style={mystyle}>
+    <div className='wrapper'>
     <i></i>
     <i></i>
     <i></i>
