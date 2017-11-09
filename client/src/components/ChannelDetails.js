@@ -8,6 +8,8 @@ import {
     graphql,
 } from 'react-apollo';
 
+import AnimatedSky from './AnimatedSky';
+
 const messagesSubscription = gql`
   subscription messageAdded($channelId: ID!) {
     messageAdded(channelId: $channelId) {
@@ -57,10 +59,11 @@ class ChannelDetails extends Component {
 
     return (
       <div>
+        <AnimatedSky bgcolor={"orange"}/>
         <div className="channelName">
           {channel.name}
         </div>
-        <MessageList messages={channel.messages}/>
+        <MessageList messages={channel.messages.slice(channel.messages.length-6,channel.messages.length).reverse()}/>
       </div>
     );
   }

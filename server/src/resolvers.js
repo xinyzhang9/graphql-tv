@@ -3,27 +3,38 @@ import { withFilter } from 'graphql-subscriptions';
 
 const channels = [{
   id: '1',
-  name: 'soccer',
+  name: 'LandScape',
   messages: [{
     id: '1',
-    text: 'soccer is football',
+    text: '好酷啊啊啊啊',
   }, {
     id: '2',
-    text: 'hello soccer world cup',
+    text: '有人吗?',
   }]
 }, {
   id: '2',
-  name: 'baseball',
+  name: 'Sports',
   messages: [{
     id: '3',
-    text: 'baseball is life',
+    text: '刚换台，感觉很不错',
   }, {
     id: '4',
-    text: 'hello baseball world series',
+    text: '前排占座',
+  }]
+},
+{
+  id: '3',
+  name: 'Music',
+  messages: [{
+    id: '5',
+    text: '听听有什么新歌 xD',
+  }, {
+    id: '6',
+    text: '这么晚了还有人吗？！！！',
   }]
 }];
-let nextId = 3;
-let nextMessageId = 5;
+let nextId = 4;
+let nextMessageId = 7;
 
 const pubsub = new PubSub();
 
@@ -48,7 +59,9 @@ export const resolvers = {
         throw new Error("Channel does not exist");
 
       const newMessage = { id: String(nextMessageId++), text: message.text };
+
       channel.messages.push(newMessage);
+      // console.log(channel.messages.length);
 
       pubsub.publish('messageAdded', { messageAdded: newMessage, channelId: message.channelId });
 
