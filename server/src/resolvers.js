@@ -3,7 +3,7 @@ import { withFilter } from 'graphql-subscriptions';
 
 const channels = [{
   id: '1',
-  name: 'Sky',
+  name: 'Galaxy Zero',
   messages: [{
     id: '1',
     text: '好酷啊啊啊啊',
@@ -13,7 +13,7 @@ const channels = [{
   }]
 }, {
   id: '2',
-  name: 'Universe',
+  name: 'Galaxy Alpha',
   messages: [{
     id: '3',
     text: '刚换台，感觉很不错',
@@ -22,9 +22,20 @@ const channels = [{
     text: '前排占座',
   }]
 },
+{
+  id: '3',
+  name: 'Galaxy Beta',
+  messages: [{
+    id: '5',
+    text: '这个好看',
+  }, {
+    id: '6',
+    text: 'Yoohoo!',
+  }]
+},
 ];
-let nextId = 3;
-let nextMessageId = 5;
+let nextId = 4;
+let nextMessageId = 7;
 
 const pubsub = new PubSub();
 

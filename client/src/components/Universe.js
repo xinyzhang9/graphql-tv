@@ -2,21 +2,25 @@ import React, {Component} from 'react';
 import TweenLite from 'gsap';
 import Circ from 'gsap';
 class Universe extends Component {
+  constructor(props){
+    super(props);
+  }
   componentDidMount(){
         var width, height, largeHeader, canvas, ctx, points, target, animateHeader = true;
 
         // Main
-        initHeader();
+        initHeader(this.props.bgImage);
         initAnimation();
         addListeners();
 
-        function initHeader() {
+        function initHeader(bgImage) {
             width = window.innerWidth;
             height = window.innerHeight;
             target = {x: width/2, y: height/2};
 
             largeHeader = document.getElementById('large-header');
             largeHeader.style.height = height+'px';
+            largeHeader.style.backgroundImage = 'url('+ bgImage +')';
 
             canvas = document.getElementById('demo-canvas');
             canvas.width = width;
